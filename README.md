@@ -72,7 +72,7 @@ Java.
 Para as notas primeiro forneça o numero de acertos e depois o de erros.
 
 Exemplo:  
-![](https://i.ibb.co/CtF1MkH/asdfsdfsdafsdfa.png)
+![](https://i.ibb.co/fk8KJP9/asdfsdfsdafsdfa.png)
 
 4. Coloque o diretorio do arquivo .txt no campo de text
 

@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 
-![Study Charts](https://i.ibb.co/rM7TFjb/Sem-t-tulo-1.png)
+![Study Charts](https://i.ibb.co/CHWxNsF/asdfsdfsdafsdfa.png)
   </a>
 
   <h1 align="center">Study Charts</h1>
@@ -79,7 +79,7 @@ Exemplo:
 5. Clique em "get"
 
 [![Image Treatment Test!](http://img.youtube.com/vi/B4flBOobNPk/0.jpg)](https://youtu.be/B4flBOobNPk "Little red riding hood - Click to Watch!")
-![](https://i.ibb.co/CHWxNsF/asdfsdfsdafsdfa.png)
+![](https://i.ibb.co/zf42TNS/asdfsdfsdafsdfa.png)
 ### Credits
 
 Matheus Markies - [@MarkiesMatheus](https://twitter.com/MarkiesMatheus) - matheus.markies@gmail.com

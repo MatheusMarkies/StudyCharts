@@ -15,50 +15,52 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author MATHEUSDACOSTACAFFER
  */
 public class StudyCharts extends Application {
-    
-static String path = "";
-static Scene scene;
-        @Override
+
+    static String path = "E:\\Downloads\\Notas.txt";
+    static Scene scene;
+
+    @Override
     public void start(Stage stage) throws Exception {
-        
-//        FXMLLoader FXML_MAIN  = new FXMLLoader(getClass().getResource("MainFrame.fxml"));
-//        Parent root = FXML_MAIN.load();
-//        
-//        Scene scene = new Scene(root);
-//        
-//        stage.setTitle("Raptor UI");
-//        
-//        stage.setScene(scene);
-//        stage.show();
-//        
-//        MainFrameController FXML_Start = new MainFrameController();
 
-
-        FXMLLoader FXML_MAIN  = new FXMLLoader(getClass().getResource("LoaderFXML.fxml"));
+        FXMLLoader FXML_MAIN = new FXMLLoader(getClass().getResource("MainFrame.fxml"));
         Parent root = FXML_MAIN.load();
-        
-        scene = new Scene(root);
-        
+
+        Scene scene = new Scene(root);
+
         stage.setTitle("Raptor UI");
-        
+
         stage.setScene(scene);
         stage.show();
-        
-        LoaderFXMLController FXML_Start = new LoaderFXMLController();
 
+        MainFrameController FXML_Start = new MainFrameController();
     }
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "xlsx", "xlsx");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("You chose to open this file: "
+                    + chooser.getSelectedFile().getName());
+            setPath(chooser.getSelectedFile().getAbsolutePath());
+            System.out.println(path);
+            launch(args);
+        }
+
     }
 
     public static String getPath() {
@@ -72,5 +74,5 @@ static Scene scene;
     public static Scene getScene() {
         return scene;
     }
-    
+
 }

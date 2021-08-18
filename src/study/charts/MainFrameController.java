@@ -37,7 +37,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class MainFrameController implements Initializable {
 
-   @FXML
+    @FXML
     private Button ChangeChart;
 
     @FXML
@@ -175,13 +175,8 @@ public class MainFrameController implements Initializable {
         return all;
     }
 
-    public void getContentBy(String text) {
-
-        lineChar.getData().clear();
-        BarChart.getData().clear();
-
-        ArrayList<String> provasName = file.getProvas();
-        ArrayList<Extras.Prova> provas = new ArrayList<>();
+    public ArrayList<Extras.Prova> getProvas(ArrayList<String> provasName){
+            ArrayList<Extras.Prova> provas = new ArrayList<>();
 
         for (int i = 0; i < provasName.size(); i++) {
             Extras.Prova prova = new Extras.Prova();
@@ -192,13 +187,28 @@ public class MainFrameController implements Initializable {
 
             provas.add(prova);
         }
+        return provas;
+    }
+    
+    public void getContentBy(String text) {
+
+        lineChar.getData().clear();
+        BarChart.getData().clear();
+
+        //ArrayList<String> provasName = file.getProvas();
+        ArrayList<String> provasName = file.getProvasByMaterias(file.getMaterias());
+        
+        ArrayList<Extras.Prova> provas = getProvas(provasName);
+        
         XYChart.Series series = new XYChart.Series();
         XYChart.Series barSeries = new XYChart.Series();
         if (!byContent) {
             int g = 0;
             for (int i = 0; i < provas.size(); i++) {
                 for (Materia materia : provas.get(i).materias) {
+                    System.out.println(materia.Nome + " | " + text);
                     if (Extras.Separator.compareString(materia.Nome, text)) {
+
                         g++;
 
                         series.getData().add(new XYChart.Data(provas.get(i).prova, materia.Acertos / (materia.Erros + 1)));
@@ -221,8 +231,9 @@ public class MainFrameController implements Initializable {
             int g = 0;
             for (int i = 0; i < provas.size(); i++) {
                 for (Materia materia : Separator.getConteudo(provas.get(i).materias)) {
-
+                    System.out.println(materia.Conteudo + " | " + text);
                     if (Extras.Separator.compareString(materia.Conteudo, text)) {
+
                         g++;
                         series.getData().add(new XYChart.Data(provas.get(i).prova, materia.Acertos / (materia.Erros + 1)));
                         series.setName(materia.Conteudo);

@@ -147,6 +147,8 @@ public class Separator {
         String newS = "";
         boolean copy = true;
 
+        int h = 0;
+        
         int index = 0;
         if (a.charAt(a.length()-1) == ' ') {
             index = a.length() - 1;
@@ -154,7 +156,10 @@ public class Separator {
             index = a.length();
         }
 
-        for (int i = 0; i < index; i++) {
+        if(a.charAt(0) == ' ')
+            h = 1;
+        
+        for (int i = h;i < index; i++) {
             copy = true;
             if (a.charAt(i) == ' ') {
                 if ((i + 1) < index) {

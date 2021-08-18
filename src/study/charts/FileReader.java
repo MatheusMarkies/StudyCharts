@@ -15,6 +15,17 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.omg.CORBA.SystemException;
+import static study.charts.StudyCharts.path;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Iterator;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -25,7 +36,8 @@ public class FileReader {
     public String fileFolder = "";
 
     public FileReader() {
-fileFolder = study.charts.StudyCharts.getPath();
+        fileFolder = study.charts.StudyCharts.getPath();
+        System.out.println(fileFolder);
     }
 
     public ArrayList<String> getProvas() {
@@ -36,8 +48,10 @@ fileFolder = study.charts.StudyCharts.getPath();
         ArrayList<String> lines = null;
 
         try {
-            lines = readFile(file);
+            lines = getExcelLines(file);
         } catch (FileNotFoundException ex) {
+            Logger.getLogger(FileReader.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(FileReader.class.getName()).log(Level.SEVERE, null, ex);
         }
         ArrayList<Integer> indexs = getIndex('*', lines);
@@ -48,6 +62,26 @@ fileFolder = study.charts.StudyCharts.getPath();
 
         return provas;
     }
+    
+    public ArrayList<String> getProvasByMaterias(ArrayList<Materia> materias){
+     ArrayList<String> provas = new ArrayList<>();
+     
+     for(int i =0;i<materias.size();i++){
+         if(provas.size() == 0){
+             provas.add(materias.get(i).Prova);
+         }else{
+             int o = 0;
+             for(String r : provas){
+                 if(materias.get(i).Prova == r)
+                     o++;
+             }
+             if(o == 0)
+                 provas.add(materias.get(i).Prova);
+         }
+     }
+     
+     return provas;
+    }
 
     ArrayList<Materia> getMaterias() {
         ArrayList<Materia> materias = new ArrayList<Materia>();
@@ -57,8 +91,10 @@ fileFolder = study.charts.StudyCharts.getPath();
         ArrayList<String> lines = null;
 
         try {
-            lines = readFile(file);
+            lines = getExcelLines(file);
         } catch (FileNotFoundException ex) {
+            Logger.getLogger(FileReader.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(FileReader.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -66,36 +102,65 @@ fileFolder = study.charts.StudyCharts.getPath();
 
         int index = 0;
         String prova = "";
-        for (int i = 0; i < lines.size(); i++) {
+        if (indexs.size() > 0) {
+            for (int i = 0; i < lines.size(); i++) {
 
-            if (i >= indexs.get(index)) {
+                if (i >= indexs.get(index)) {
 
-                prova = removeChar(lines.get(indexs.get(index)), '*');
-                if ((index + 1) < indexs.size()) {
-                    index++;
+                    prova = removeChar(lines.get(indexs.get(index)), '*');
+                    if ((index + 1) < indexs.size()) {
+                        index++;
+                    }
+                } else {
+                    Materia materia = new Materia();
+                    ArrayList<Integer> in = findNumbers(lines.get(i));
+
+                    materia.Prova = prova;
+
+                    materia.Nome = formatString(lines.get(i), in.get(0));
+                    try {
+                        materia.Conteudo = formatString(lines.get(i), in.get(0)).split(":")[0];
+                    } catch (Exception e) {
+                        materia.Conteudo = formatString(lines.get(i), in.get(0));
+                    }
+                    materia.Acertos = getNumbers(lines.get(i)).get(0);
+                    try {
+                        materia.Erros = getNumbers(lines.get(i)).get(1) - getNumbers(lines.get(i)).get(0);
+                    } catch (Exception e) {
+                        materia.Erros = 0;
+                    }
+
+                    materias.add(materia);
                 }
-            } else {
+
+            }
+        } else {
+            prova = "Geral";
+            for (int i = 0; i < lines.size(); i++) {
                 Materia materia = new Materia();
                 ArrayList<Integer> in = findNumbers(lines.get(i));
-
+                //System.out.println(lines.get(i));
                 materia.Prova = prova;
+                if (in.size() > 0) {
+                    materia.Nome = formatString(lines.get(i), in.get(0));
+                    try {
+                        materia.Conteudo = formatString(lines.get(i), in.get(0)).split(":")[0];
+                    } catch (Exception e) {
+                        materia.Conteudo = formatString(lines.get(i), in.get(0));
+                    }
+                    materia.Acertos = getNumbers(lines.get(i)).get(0);
+                    try {
+                        //materia.Erros = getNumbers(lines.get(i)).get(1) - getNumbers(lines.get(i)).get(0);
+                        materia.Erros = getNumbers(lines.get(i)).get(1);
+                    } catch (Exception e) {
+                        materia.Erros = 0;
+                    }
 
-                materia.Nome = formatString(lines.get(i), in.get(0));
-                try {
-                    materia.Conteudo = formatString(lines.get(i), in.get(0)).split(":")[0];
-                } catch (Exception e) {
-                    materia.Conteudo = formatString(lines.get(i), in.get(0));
+                    materias.add(materia);
                 }
-                materia.Acertos = getNumbers(lines.get(i)).get(0);
-                try {
-                    materia.Erros = getNumbers(lines.get(i)).get(1) - getNumbers(lines.get(i)).get(0);
-                } catch (Exception e) {
-                    materia.Erros = 0;
-                }
-
-                materias.add(materia);
             }
-
+//            for(Materia i : materias)
+//                System.out.println(i.toString());
         }
 
         return materias;
@@ -216,10 +281,11 @@ fileFolder = study.charts.StudyCharts.getPath();
         }
         return newString;
     }
+
     public String removeChar(String text, char removed) {
         String newString = "";
         for (int i = 0; i < text.length(); i++) {
-            if(text.charAt(i)!=removed){
+            if (text.charAt(i) != removed) {
                 newString += text.charAt(i);
             }
         }
@@ -233,5 +299,63 @@ fileFolder = study.charts.StudyCharts.getPath();
     public String getFileFolder() {
         return fileFolder;
     }
-    
+
+    public String ReadCellData(int vRow, int vColumn) {
+        String value = null;
+        Workbook wb = null;
+        try {
+
+            FileInputStream fis = new FileInputStream(fileFolder);
+
+            wb = new XSSFWorkbook(fis);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        Sheet sheet = wb.getSheetAt(0);
+        Row row = sheet.getRow(vRow);
+        Cell cell = row.getCell(vColumn);
+        value = cell.getStringCellValue();
+        return value;
+    }
+
+    public ArrayList<String> getExcelLines(File file) throws IOException {
+        ArrayList<String> lines = new ArrayList<String>();
+
+        FileInputStream fis = new FileInputStream(file);
+
+        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        Iterator<Row> itr = sheet.iterator();
+
+        while (itr.hasNext()) {
+            Row row = itr.next();
+            Iterator<Cell> cellIterator = row.cellIterator();
+
+            String lineContent = "";
+            int stringNumber = 0;
+
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                switch (cell.getCellType()) {
+                    case Cell.CELL_TYPE_STRING:
+                        if (stringNumber == 0) {
+                            lineContent += cell.getStringCellValue() + ": ";
+                        } else {
+                            lineContent += cell.getStringCellValue() + " ";
+                        }
+                        stringNumber++;
+                        break;
+                    case Cell.CELL_TYPE_NUMERIC:
+                        lineContent += cell.getNumericCellValue() + " ";
+                        break;
+                    default:
+                }
+            }
+            lines.add(lineContent);
+        }
+        return lines;
+    }
+
 }

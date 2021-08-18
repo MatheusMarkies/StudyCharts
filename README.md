@@ -64,7 +64,7 @@ Java.
 
 ### Installation / Instalação
 
-1. Baixe o arquivo .jar
+1. Baixe o arquivo .jar em "Releases"
 2. Abra o arquivo
 
 3. Crie um arquivo .txt contendo suas notas. (Separe as provas com um '*' e separe o Conteudo da Materia com um ':')

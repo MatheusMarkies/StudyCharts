@@ -37,13 +37,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class MainFrameController implements Initializable {
 
-    @FXML
-    private Button ByContent;
-
-    @FXML
-    private Button ByName;
-
-    @FXML
+   @FXML
     private Button ChangeChart;
 
     @FXML
@@ -65,25 +59,16 @@ public class MainFrameController implements Initializable {
     private BarChart<?, ?> BarChart;
 
     @FXML
-    private TextField InputName;
-
-    @FXML
     private NumberAxis y;
 
     @FXML
     private ScrollPane ContentScroll;
 
     @FXML
-    private Button GetChar;
-
-    @FXML
     private LineChart<?, ?> lineChar;
 
     @FXML
     private AnchorPane ContentConteudo;
-
-    @FXML
-    private Label Indicador;
 
     boolean byContent = false;
     boolean barChart = true;
@@ -100,32 +85,6 @@ public class MainFrameController implements Initializable {
         ArrayList<Materia> conteudoGeral = Extras.Separator.getConteudo(materias);
 
         getAllContents();
-        ByName.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                byContent = false;
-                Indicador.setText("Por Nome");
-            }
-        });
-        ByContent.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                byContent = true;
-                Indicador.setText("Por Conteudo");
-            }
-        });
-
-        GetChar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                for (Extras.AnchorButton i : buttonList) {
-                    System.out.println(i.button.getText());
-                }
-                InputName.setText("");
-
-            }
-        });
 
         ChangeChart.setOnAction(new EventHandler<ActionEvent>() {
             @Override

@@ -48,11 +48,6 @@
             </ScrollPane>
          </children>
       </Pane>
-      <Button fx:id="ByContent" layoutX="32.0" layoutY="25.0" mnemonicParsing="false" text="By Content" />
-      <Button fx:id="ByName" layoutX="155.0" layoutY="25.0" mnemonicParsing="false" text="By Name" />
-      <TextField fx:id="InputName" layoutX="20.0" layoutY="53.0" prefHeight="25.0" prefWidth="210.0" />
-      <Button fx:id="GetChar" layoutX="241.0" layoutY="53.0" mnemonicParsing="false" text="Get" />
-      <Label fx:id="Indicador" layoutX="230.0" layoutY="29.0" text="Por Conteudo" />
       <Label fx:id="ContentInfo" layoutX="14.0" layoutY="628.0" prefHeight="73.0" prefWidth="1280.0" textAlignment="CENTER">
          <font>
             <Font size="21.0" />

@@ -18,7 +18,7 @@
    <children>
       <Pane layoutX="12.0" layoutY="91.0" prefHeight="530.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;">
          <children>
-            <LineChart fx:id="lineChar" layoutX="41.0" layoutY="87.0" opacity="0.0" prefHeight="374.0" prefWidth="470.0" style="-fx-background-color: #ededed;" title="Materias A/E">
+            <LineChart fx:id="lineChar" layoutX="41.0" layoutY="87.0" opacity="0.0" prefHeight="374.0" prefWidth="470.0" style="-fx-background-color: #ededed;" title="Acertos/Erros">
               <xAxis>
                 <CategoryAxis side="BOTTOM" fx:id="x" />
               </xAxis>
@@ -32,7 +32,7 @@
                 <AnchorPane fx:id="Content" minHeight="0.0" minWidth="0.0" prefHeight="1437.0" prefWidth="149.0" />
               </content>
             </ScrollPane>
-            <BarChart fx:id="BarChart" layoutX="41.0" layoutY="87.0" prefHeight="374.0" prefWidth="470.0">
+            <BarChart fx:id="BarChart" layoutX="41.0" layoutY="87.0" prefHeight="374.0" prefWidth="470.0" title="Perguntas/Provas">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -48,11 +48,6 @@
             </ScrollPane>
          </children>
       </Pane>
-      <Button fx:id="ByContent" layoutX="32.0" layoutY="25.0" mnemonicParsing="false" text="By Content" />
-      <Button fx:id="ByName" layoutX="155.0" layoutY="25.0" mnemonicParsing="false" text="By Name" />
-      <TextField fx:id="InputName" layoutX="20.0" layoutY="53.0" prefHeight="25.0" prefWidth="210.0" />
-      <Button fx:id="GetChar" layoutX="241.0" layoutY="53.0" mnemonicParsing="false" text="Get" />
-      <Label fx:id="Indicador" layoutX="230.0" layoutY="29.0" text="Por Conteudo" />
       <Label fx:id="ContentInfo" layoutX="14.0" layoutY="628.0" prefHeight="73.0" prefWidth="1280.0" textAlignment="CENTER">
          <font>
             <Font size="21.0" />

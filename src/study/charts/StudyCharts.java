@@ -22,44 +22,36 @@ import javafx.stage.Stage;
  */
 public class StudyCharts extends Application {
     
-//    @Override
-//    public void start(Stage primaryStage) {
-//        Button btn = new Button();
-//        btn.setText("Say 'Hello World'");
-//        
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//            
-//            @Override
-//            public void handle(ActionEvent event) {
-//                System.out.println("Hello World!");
-//            }
-//        });
-//        
-//        StackPane root = new StackPane();
-//        root.getChildren().add(btn);
-//        
-//        Scene scene = new Scene(root, 300, 250);
-//        
-//        primaryStage.setTitle("Hello World!");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-//        
-//    }
-
+static String path = "";
+static Scene scene;
         @Override
     public void start(Stage stage) throws Exception {
         
-        FXMLLoader FXML_MAIN  = new FXMLLoader(getClass().getResource("MainFrame.fxml"));
+//        FXMLLoader FXML_MAIN  = new FXMLLoader(getClass().getResource("MainFrame.fxml"));
+//        Parent root = FXML_MAIN.load();
+//        
+//        Scene scene = new Scene(root);
+//        
+//        stage.setTitle("Raptor UI");
+//        
+//        stage.setScene(scene);
+//        stage.show();
+//        
+//        MainFrameController FXML_Start = new MainFrameController();
+
+
+        FXMLLoader FXML_MAIN  = new FXMLLoader(getClass().getResource("LoaderFXML.fxml"));
         Parent root = FXML_MAIN.load();
         
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         
         stage.setTitle("Raptor UI");
         
         stage.setScene(scene);
         stage.show();
         
-        MainFrameController FXML_Start = new MainFrameController();
+        LoaderFXMLController FXML_Start = new LoaderFXMLController();
+
     }
     
     /**
@@ -67,6 +59,18 @@ public class StudyCharts extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static String getPath() {
+        return path;
+    }
+
+    public static void setPath(String path) {
+        StudyCharts.path = path;
+    }
+
+    public static Scene getScene() {
+        return scene;
     }
     
 }

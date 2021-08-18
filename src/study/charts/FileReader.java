@@ -22,10 +22,10 @@ import org.omg.CORBA.SystemException;
  */
 public class FileReader {
 
-    static String fileFolder = "C:\\Users\\MATHEUSDACOSTACAFFER\\Desktop\\Notas.txt";
+    public String fileFolder = "";
 
     public FileReader() {
-
+fileFolder = study.charts.StudyCharts.getPath();
     }
 
     public ArrayList<String> getProvas() {
@@ -224,6 +224,14 @@ public class FileReader {
             }
         }
         return newString;
+    }
+
+    public void setFileFolder(String fileFolder) {
+        this.fileFolder = fileFolder;
+    }
+
+    public String getFileFolder() {
+        return fileFolder;
     }
     
 }

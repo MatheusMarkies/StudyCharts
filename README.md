@@ -80,7 +80,7 @@ Exemplo:
 
 [![Image Treatment Test!](http://img.youtube.com/vi/6_pbqiY58SY/0.jpg)](https://youtu.be/6_pbqiY58SY "Little red riding hood - Click to Watch!")
 ![](https://i.ibb.co/zf42TNS/asdfsdfsdafsdfa.png)
-### Credits
+### Contact
 
 Matheus Markies - [@MarkiesMatheus](https://twitter.com/MarkiesMatheus) - matheus.markies@gmail.com
 

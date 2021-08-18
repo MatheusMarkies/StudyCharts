@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="711.0" prefWidth="1303.0" style="-fx-background-color: #e0e0e0;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="study.charts.MainFrameController">
+    <stylesheets>
+        <URL value="@mainframe.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="12.0" layoutY="91.0" prefHeight="530.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <LineChart fx:id="lineChar" layoutX="41.0" layoutY="87.0" opacity="0.0" prefHeight="374.0" prefWidth="470.0" style="-fx-background-color: #ededed;" title="Acertos/Erros">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" fx:id="x" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="y" side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <PieChart fx:id="PieChart" layoutX="860.0" layoutY="84.0" prefHeight="381.0" prefWidth="381.0" title="Conteudo" />
+            <ScrollPane fx:id="ContentScroll" layoutX="540.0" layoutY="87.0" prefHeight="374.0" prefWidth="148.0">
+              <content>
+                <AnchorPane fx:id="Content" minHeight="0.0" minWidth="0.0" prefHeight="1437.0" prefWidth="149.0" />
+              </content>
+            </ScrollPane>
+            <BarChart fx:id="BarChart" layoutX="41.0" layoutY="87.0" prefHeight="374.0" prefWidth="470.0" title="Perguntas/Provas">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+            <Button fx:id="ChangeChart" layoutX="41.0" layoutY="59.0" mnemonicParsing="false" text="Change Chart" />
+            <ScrollPane fx:id="ContentScrollConteudo" layoutX="697.0" layoutY="88.0" prefHeight="374.0" prefWidth="148.0">
+               <content>
+                  <AnchorPane fx:id="ContentConteudo" minHeight="0.0" minWidth="0.0" prefHeight="1445.0" prefWidth="148.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <Button fx:id="ByContent" layoutX="32.0" layoutY="25.0" mnemonicParsing="false" text="By Content" />
+      <Button fx:id="ByName" layoutX="155.0" layoutY="25.0" mnemonicParsing="false" text="By Name" />
+      <TextField fx:id="InputName" layoutX="20.0" layoutY="53.0" prefHeight="25.0" prefWidth="210.0" />
+      <Button fx:id="GetChar" layoutX="241.0" layoutY="53.0" mnemonicParsing="false" text="Get" />
+      <Label fx:id="Indicador" layoutX="230.0" layoutY="29.0" text="Por Conteudo" />
+      <Label fx:id="ContentInfo" layoutX="14.0" layoutY="628.0" prefHeight="73.0" prefWidth="1280.0" textAlignment="CENTER">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

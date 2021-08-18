@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 
-![Study Charts](https://i.ibb.co/rM7TFjb/Sem-t-tulo-1.png)
+![Study Charts](https://i.ibb.co/CHWxNsF/asdfsdfsdafsdfa.png)
   </a>
 
   <h1 align="center">Study Charts</h1>
@@ -64,7 +64,7 @@ Java.
 
 ### Installation / Instalação
 
-1. Baixe o arquivo .jar
+1. Baixe o arquivo .jar em "Releases"
 2. Abra o arquivo
 
 3. Crie um arquivo .txt contendo suas notas. (Separe as provas com um '*' e separe o Conteudo da Materia com um ':')
@@ -78,7 +78,9 @@ Exemplo:
 
 5. Clique em "get"
 
-### Credits
+[![Image Treatment Test!](http://img.youtube.com/vi/6_pbqiY58SY/0.jpg)](https://youtu.be/6_pbqiY58SY "Little red riding hood - Click to Watch!")
+![](https://i.ibb.co/zf42TNS/asdfsdfsdafsdfa.png)
+### Contact
 
 Matheus Markies - [@MarkiesMatheus](https://twitter.com/MarkiesMatheus) - matheus.markies@gmail.com
 

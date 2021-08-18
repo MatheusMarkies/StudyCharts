@@ -78,6 +78,8 @@ Exemplo:
 
 5. Clique em "get"
 
+[![Image Treatment Test!](http://img.youtube.com/vi/dWkSWJJ7J4c/0.jpg)](https://youtu.be/B4flBOobNPk "Little red riding hood - Click to Watch!")
+
 ### Credits
 
 Matheus Markies - [@MarkiesMatheus](https://twitter.com/MarkiesMatheus) - matheus.markies@gmail.com

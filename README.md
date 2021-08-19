@@ -67,16 +67,12 @@ Java.
 1. Baixe o arquivo .jar em "Releases"
 2. Abra o arquivo
 
-3. Crie um arquivo .txt contendo suas notas. (Separe as provas com um '*' e separe o Conteudo da Materia com um ':')
-
-Para as notas primeiro forneça o numero de acertos e depois o de erros.
+3. Crie uma tabela como esta:
 
 Exemplo:  
-![](https://i.ibb.co/fk8KJP9/asdfsdfsdafsdfa.png)
+![](https://i.ibb.co/Qv1HNGz/asdfsdfsdafsdfa.png)
 
-4. Coloque o diretorio do arquivo .txt no campo de text
-
-5. Clique em "get"
+4. Selecione o arquivo apos abri o .jar
 
 [![Image Treatment Test!](http://img.youtube.com/vi/6_pbqiY58SY/0.jpg)](https://youtu.be/6_pbqiY58SY "Little red riding hood - Click to Watch!")
 ![](https://i.ibb.co/zf42TNS/asdfsdfsdafsdfa.png)
